@@ -181,7 +181,7 @@ from rest_framework.permissions import AllowAny
 from rest_framework.authentication import SessionAuthentication, BasicAuthentication
 import csv
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))  # Get the directory of the script
-file_path = os.path.join(BASE_DIR, "registered_users.csv")
+file_path = os.path.join(BASE_DIR, "about/registered_users.csv")
 file_exists = os.path.isfile(file_path)
 def save_to_csv(data):
     with open(file_path, mode='a', newline='', encoding='utf-8') as file:
