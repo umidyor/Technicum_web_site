@@ -26,7 +26,7 @@ logging.basicConfig(level=logging.INFO)
 bot = Bot(token=BOT_TOKEN)
 dp = Dispatcher(bot, storage=MemoryStorage())
 CHANNELS = {
-    'clutchanaldo': "ParkenPolitexnikumRasmiy📌",
+    'parkenttumaanpolitexnikumi': "ParkenPolitexnikumRasmiyðŸ“Œ",
 }
 
 import pandas as pd
@@ -144,7 +144,7 @@ async def set_default_commands(dp):
 
 
 def get_majors():
-    url = "http://127.0.0.1:8000/api/courses"
+    url = "https://parkentpolitexnikum.uz/api/courses"
     API_KEY = "hCw6Cj6G.K7bmo7C4JWufviGW0VpDKUZPrBjttLSy"
 
     headers = {"Authorization": f"Api-Key {API_KEY}"}
@@ -403,6 +403,7 @@ async def process_suggestion(callback_query: types.CallbackQuery):
     if 0 <= idx < len(data):
         item = data[idx]
         text = (f"📅 Sana: {item['date']}\n"
+                f'👤 Foydalanuvchi id: <a href="tg://user?id={item["user_id"]}">{item["user_id"]}</a>'
                 f"👤 Foydalanuvchi: {item['name']} (@{item['username']})\n"
                 f"📝 Taklif:\n{item['suggest']}")
 
@@ -415,7 +416,7 @@ async def process_suggestion(callback_query: types.CallbackQuery):
             chat_id=callback_query.message.chat.id,
             message_id=callback_query.message.message_id,
             text=text,
-            reply_markup=reply_button
+            reply_markup=reply_button,parse_mode="html"
         )
 
     await bot.answer_callback_query(callback_query.id)
