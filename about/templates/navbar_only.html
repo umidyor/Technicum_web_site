@@ -72,6 +72,56 @@
         .create-post-btn:hover {
             background-color: #45a049; /* Darker green on hover */
         }
+
+
+        #flip a {
+    display: block;
+    color:#ffffff;
+    font-family: 'Gilroy';
+    font-weight: 700;
+    font-size: 16px;
+}
+#flip {
+    width: 100%;
+    height: 50px;
+    background-size: 200% 200%;
+    animation: gradient 5s ease infinite;
+    background-image: linear-gradient(90deg, #6946EC, #F8C88A, #6946ec);
+    overflow: hidden;
+    justify-items: center;
+    align-items: center;
+    text-align: center;
+}
+#flip {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#flip span {
+    font-size: 16px;
+    font-weight: 700;
+    text-decoration: underline;
+    margin-left: 20px;
+    display: inline-block;
+    animation: moveSpan 3s infinite alternate;
+}
+
+
+@keyframes moveSpan {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(27px);
+    }
+}
+
+@media (max-width: 1100px) {
+    #flip a,
+    #flip span  {
+        font-size: 12px !important;
+    }
+}
     </style>
 
     <!-- Google tag (gtag.js) -->
@@ -92,6 +142,19 @@
 <script src="{%static 'css/navbar/main.js'%}"></script>
 <script src="{%static 'css/navbar/jquery.sticky.js'%}"></script>
 
+<div id="flip">
+
+          <a href="https://t.me/parkentpolitexnikumbot">
+            ✈️Botimiz orqali aloqaga chiqing
+            <span>
+              Telegram botimiz orqali ro'yxatdan o'ting
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="12" viewBox="0 0 20 12" fill="none">
+                <path d="M1.27399 4.90417C0.859773 4.90417 0.523987 5.23996 0.523987 5.65417C0.523987 6.06839 0.859773 6.40417 1.27399 6.40417V4.90417ZM19.1813 6.1845C19.4742 5.89161 19.4742 5.41674 19.1813 5.12384L14.4083 0.350874C14.1154 0.0579805 13.6405 0.0579805 13.3476 0.350874C13.0547 0.643767 13.0547 1.11864 13.3476 1.41153L17.5903 5.65417L13.3476 9.89682C13.0547 10.1897 13.0547 10.6646 13.3476 10.9575C13.6405 11.2504 14.1154 11.2504 14.4083 10.9575L19.1813 6.1845ZM1.27399 6.40417H18.6509V4.90417H1.27399V6.40417Z" fill="white"></path>
+              </svg>
+            </span>
+          </a>
+
+</div>
 <div class="site-mobile-menu site-navbar-target">
     <div class="site-mobile-menu-header">
         <div class="site-mobile-menu-close mt-3">
