@@ -1,0 +1,220 @@
+{%extends 'navbar_only.html'%}
+{%block title%}Alohida Yangilik{%endblock%}
+
+{%block content%}
+<section>
+    <style>
+
+        section {
+            padding-top:150 ; /* Add space at the top */
+            padding-bottom: 80px; /* Add space at the bottom */
+        }
+        .content-container {
+            max-width: 1000px;
+            margin: auto;
+            border: 2px solid #ccc;
+            border-radius: 8px;
+            overflow: hidden;
+            background-color: #f9f9f9;
+            padding: 20px;
+            margin-top: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        .slide-item {display: none; width: 100%; height: 350px; position: relative;}
+
+        /* Slideshow container */
+        .slideshow-wrapper {
+            position: relative;
+            margin: auto;
+            border-top: 3px solid blue; /* Blue line above */
+            padding-top: 10px;
+        }
+
+        /* Next & previous buttons */
+        .slide-prev, .slide-next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            padding: 16px;
+            margin-top: -22px;
+            color: red;
+            font-weight: bold;
+            font-size: 18px;
+            transition: 0.6s ease;
+            border-radius: 0 3px 3px 0;
+            user-select: none;
+        }
+
+        /* Position the "next button" to the right */
+        .slide-next {
+            right: 0;
+            border-radius: 3px 0 0 3px;
+        }
+
+        /* On hover, add a black background color */
+        .slide-prev:hover, .slide-next:hover {
+            background-color: rgba(0,0,0,0.8);
+        }
+
+        /* Caption text */
+        .slide-caption {
+            color: #333;
+            font-size: 18px;
+            padding: 8px 12px;
+            text-align: center;
+        }
+
+        /* Description text */
+        .slide-description {
+            font-size: 14px;
+            color: #666;
+            text-align: center;
+            margin: 5px 0;
+        }
+
+        /* Number text (1/3 etc) */
+        .slide-number {
+            color: #f2f2f2;
+            font-size: 12px;
+            padding: 8px 12px;
+            position: absolute;
+            top: 0;
+        }
+
+        /* Fading animation */
+        .fade-effect {
+            animation-name: fade-effect;
+            animation-duration: 1.5s;
+        }
+
+        @keyframes fade-effect {
+            from {opacity: .4}
+            to {opacity: 1}
+        }
+
+        @media only screen and (max-width: 300px) {
+            .slide-prev, .slide-next, .slide-caption {font-size: 11px}
+        }
+        .notification {
+            display: none; /* Hidden by default */
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 15px 20px;
+            background-color: #4CAF50; /* Green background */
+            color: white;
+            border-radius: 5px;
+            z-index: 1000; /* Above other elements */
+            transition: opacity 0.5s; /* Fade effect */
+        }
+    </style>
+
+    <div class="content-container">
+    {% if  files_with_types %}
+        <div class="slideshow-wrapper">
+            {% for file_info in files_with_types %}
+            <div class="slide-item fade-effect">
+                <div class="slide-number">{{ forloop.counter }} / {{ files_with_types|length }}</div>
+
+                {% if file_info.type == 'image' %}
+                <img src="{{ file_info.file }}" style="width:100%; height:100%; object-fit: contain;">
+                {% elif file_info.type == 'video' %}
+                <video width="100%" height="100%" style="object-fit: contain;" controls>
+                    <source src="{{ file_info.file }}" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                {% else %}
+                <p>Unsupported file type</p>
+                {% endif %}
+            </div>
+            {% endfor %}
+
+            <a class="slide-prev" onclick="plusSlides(-1)">❮</a>
+            <a class="slide-next" onclick="plusSlides(1)">❯</a>
+        </div>
+
+        <!-- Notes section -->
+        <div class="notes-section" style="text-align:center; margin-top: 10px;">
+            <p class="slide-description">{{ news_item.news_date|date:"F j, Y" }}</p>
+            <p class="slide-caption">{{ news_item.news_name }}</p>
+            <p class="slide-description">{{ news_item.news_description|linebreaks|urlize }}</p>
+
+             <button onclick="copyLink()" class="create-post-btn">Postni ulashish📋</button>
+             <input type="text" id="newsSlug" value="{{ request.build_absolute_uri }}" readonly style="opacity: 0; position: absolute;">
+
+            <p>{% if user.is_superuser or user.is_staff %}
+            <br>
+            <a href="{% url 'edit_news' news_item.pk %}" class="nav-link">
+                <button class="create-post-btn">Postni tahrirlash📝</button>
+            </a>
+            <br>
+            <a href="{% url 'delete' news_item.pk %}" class="nav-link" onclick="return confirmDelete();">
+                <button class="create-post-btn">Postni o'chirish🚮</button>
+            </a>
+
+                {% endif %}</p>
+        </div>
+    {%endif%}
+</div>
+     <div id="notification" class="notification">Postdan muvaffaqiyatli tarzda link nusxasi olindi!🚀</div>
+    <script>
+        function confirmDelete() {
+    var result = confirm("Haqiqatdan ham ushbu postni o'chirmoqchimisiz?");
+    return result;  // If true, deletion continues; if false, the action is canceled
+}
+
+ function copyLink() {
+            var copyText = document.getElementById("newsSlug");
+            copyText.style.opacity = 1; // Make the input visible to copy
+            copyText.select();
+            document.execCommand("copy"); // Copy the text
+            copyText.style.opacity = 0; // Hide it again
+
+            // Show notification
+            var notification = document.getElementById("notification");
+            notification.style.display = "block"; // Show the notification
+            notification.style.opacity = 1; // Make it visible
+
+            // Fade out the notification after 2 seconds
+            setTimeout(function() {
+                notification.style.opacity = 0; // Fade out
+                setTimeout(function() {
+                    notification.style.display = "none"; // Hide it after fade out
+                }, 500); // Delay before hiding
+            }, 3000); // Show for 2 seconds
+        }
+
+
+
+        let slideIndex = 1;
+        showSlides(slideIndex);
+
+        function plusSlides(n) {
+            showSlides(slideIndex += n);
+        }
+
+        function showSlides(n) {
+            let i;
+            let slides = document.getElementsByClassName("slide-item");
+            let videos = document.querySelectorAll("video");
+            if (n > slides.length) {slideIndex = 1}
+            if (n < 1) {slideIndex = slides.length}
+
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+                if (videos[i]) {
+                    videos[i].pause(); // Pause all videos
+                }
+            }
+            slides[slideIndex - 1].style.display = "block";
+            if (videos[slideIndex - 1]) {
+                videos[slideIndex - 1].play(); // Play the current video
+            }
+        }
+    </script>
+
+
+</section>
+{%endblock%}

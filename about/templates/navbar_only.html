@@ -1,0 +1,309 @@
+{%load static%}
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <link rel="stylesheet" href="{%static 'css/about.css' %}">
+    <link rel="stylesheet" href="{%static 'css/animate.css'%}">
+    <link rel="stylesheet" href="{%static 'css/carousel.css'%}">
+    <link rel="stylesheet" href="{%static 'css/img_animate.css'%}">
+    <link rel="stylesheet" href="{%static 'css/media.css'%}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    <style>
+
+
+
+        #btn {
+            font-weight: 700;
+        }
+        .nav-item a:hover{
+            color: rgba(40, 156, 40, 0.521);
+            font-weight: 700;
+        }
+        .carousel-inner .carousel-item img{
+            width: 100%;
+            max-width: 100%;
+            height: 100%;
+            max-height: 100%;
+            border-radius: 0px;
+            transition: transform 0s;
+
+        }
+
+        .carousel-inner .carousel-item img:hover{
+            transform: scale(0);
+            transform: translateY(0px);
+        }
+        .slide{
+            padding: 0rem 0!important;
+            min-height: 0vh;
+        }
+        .carousel-caption .h1{
+            width: 50%;
+            margin: auto;
+            text-shadow: 4px 2px 6px black;
+        }
+
+        .create-post-btn {
+        background-color: #4CAF50; /* Green background */
+        color: white; /* White text */
+        padding: 10px 20px; /* Padding for the button */
+        border: none; /* Remove default border */
+        border-radius: 5px; /* Rounded corners */
+        font-size: 16px; /* Text size */
+        cursor: pointer; /* Pointer on hover */
+        transition: background-color 0.3s ease; /* Smooth transition on hover */
+    }
+
+        .create-post-btn {
+            background-color: #007bff; /* Default Bootstrap primary color */
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s; /* Smooth transition */
+        }
+
+        .create-post-btn:hover {
+            background-color: #45a049; /* Darker green on hover */
+        }
+    </style>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QSSVRGJ4BK"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-QSSVRGJ4BK');
+    </script>
+
+</head>
+<body>
+
+<link rel="stylesheet" href="{%static 'css/navbar/style.css'%}">
+<script src="{%static 'css/navbar/jquery-3.3.1.min.js'%}"></script>
+<script src="{%static 'css/navbar/main.js'%}"></script>
+<script src="{%static 'css/navbar/jquery.sticky.js'%}"></script>
+
+<div class="site-mobile-menu site-navbar-target">
+    <div class="site-mobile-menu-header">
+        <div class="site-mobile-menu-close mt-3">
+          <span class="icon-close2 js-menu-toggle">
+            <i class="bi bi-x-lg"></i>
+          </span>
+        </div>
+    </div>
+    <div class="site-mobile-menu-body"></div>
+</div>
+
+<div class="site-navbar-wrap">
+    <div class="site-navbar-top">
+        <div class="container py-3">
+            <div class="row align-items-center">
+                <div class="col-6">
+                    <div class="d-flex me-auto">
+                        <a
+                                href="mailto:admin@parkentpolitexnikum.uz"
+                                target="_blank"
+                                class="d-flex align-items-center me-4"
+                        >
+                            <i class="bi bi-envelope me-2"></i>
+                            <span class="d-none d-md-inline-block">admin@parkentpolitexnikum.uz</span>
+                        </a>
+                        <a
+                                href="tel:+998947039050    "
+                                class="d-flex align-items-center me-auto"
+                        >
+                            <i class="bi bi-phone me-2"></i>
+                            <span class="d-none d-md-inline-block"
+                            >+998 94 703 90 50</span
+                            >
+                        </a>
+                    </div>
+                </div>
+                <div class="col-6 text-end">
+                    <div class="me-auto">
+                        <a target="_blank" href="https://www.instagram.com/parkent_politexnikumi?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="p-2 pl-0"><i class="bi bi-instagram"></i></a>
+                
+                        <a target="_blank" href="https://t.me/+UBsGxry5ftZjZmUy" class="p-2 pl-0"><i class="bi bi-telegram"></i></a>
+            
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="site-navbar site-navbar-target js-sticky-header">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-2">
+                    <h1 class="my-0 site-logo">
+                        <a href="{%url 'index'%}">
+                            
+                            <img loading="lazy" src="{%static 'logo.png'%}" width="150" alt="logo">
+                        </a>
+                    </h1>
+                </div>
+                <div class="col-10">
+                    <nav class="site-navigation text-end" role="navigation">
+                        <div class="container">
+                            <div class="d-inline-block d-lg-none ml-md-0 mr-auto py-3">
+                                <a id="site-menu-toggle"
+                                   href="#"
+                                   class="site-menu-toggle js-menu-toggle"
+                                ><i class="bi bi-list"></i
+                                ></a>
+                            </div>
+
+                            <ul
+                                    class="site-menu main-menu js-clone-nav d-none d-lg-block"
+                            >
+                                <li class="active">
+                                    <a href="{%url 'index' %}" class="nav-link">Bosh sahifa</a>
+                                </li>
+                                <li><a href="{%url 'courses' %}" class="nav-link">Kurslar</a></li>
+                                <li>
+                                    <a href="#location" class="nav-link">Manzil</a>
+                                </li>
+                                <li>
+                                    <a href="{%url 'news' %}" class="nav-link">Kunlik yangiliklar</a>
+                                </li>
+                                <li>
+                                    <a href="{%url 'about' %}" class="nav-link">Biz haqimizda</a>
+                                </li>
+                                {% if user.is_superuser or user.is_staff %}
+                                <li>
+                                    <a href="{% url 'upload_achievement' %}" class="nav-link">
+                                        <button class="create-post-btn">Post yuklash</button>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'logout' %}" class="nav-link">
+                                        <button class="create-post-btn">Logout</button>
+                                    </a>
+                                </li>
+                                {% endif %}
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{%block content%}{%endblock %}
+
+
+<footer>
+    <div class="container">
+        <div class="row text back" style="background-image: linear-gradient(
+            to right,
+            rgb(3 3 3 / 60%),
+            rgb(14 14 14 / 20%)
+        ),
+        url('{%static 'img/footer.png'%}');
+    background-repeat: no-repeat;
+    weight: 100% 450px;
+    height: 50%;">
+            <div class="col-sm-7 col-md-7 col-xl-5 offset-xl-7 offset-md-5 offset-sm-5 align-self-center">
+                <h1 class="text-white">Kasbiy talim egasi bo'lishga tayyormisiz?</h1>
+                <p class="text-white">Bizning politexnikumimizda ta'lim olishni xohlaysizmi?Unday bo'lsa
+                    hoziroq biz bilan bog'laning yoki kelajak kasbingiz bo'lgan o'zingizga yoqqan kursni tanlang va
+                    ro'yxatdan o'ting.</p>
+            </div>
+        </div>
+
+        <div class="row mt-5 pt-5">
+            <div class="text-center">
+                <p style="color: rgba(40, 156, 40, 0.521);" class="fw-bold">Bizning politexnikum joylashuvi</p>
+                <h1 class="fw-bold">Buyuk g'oyalar eng yaxshi joylarda tug'iladi</h1>
+                <p class="fw-semibold">Biz esa sizga eng qulay lokatsiyani taqdim etamiz</p>
+            </div>
+        </div>
+
+        <div id="location" class="map mt-5 mb-5 shadow">
+            <iframe src="https://yandex.com/map-widget/v1/?um=constructor%3A012fee3f2a8c6c38fd3e61589cccce58a7411a76e6a069ac6591d4529b115b54&amp;source=constructor"
+                    width="1280" height="630" frameborder="0"></iframe>
+        </div>
+
+        <div class="row pt-5">
+            <div class="col-md-4">
+                <p>KURSLAR VA TA'LIM</p>
+                <hr>
+                <ul class="nav flex-column">
+                    {%for course_name in courses%}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{%url 'every_course' course_name.pk%}">
+                            <div class="d-flex">
+
+                                <p>{{course_name.course_name}}</p>
+                            </div>
+                        </a>
+                    </li>
+                    {%endfor%}
+                </ul>
+            </div>
+            <div class="col-md-4">
+                <p>Politexnikum</p>
+                <hr>
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{%url 'index' %}">Bosh sahifa</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{%url 'about' %}">Biz haqimizda</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{%url 'news' %}">Kunlik yangiliklar</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{%url 'courses' %}">Kurslar</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#location">Manzil</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-4">
+                <p>ALOQA</p>
+                <hr>
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link" target="_blank" href="https://www.instagram.com/parkent_politexnikumi?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="><i class="bi bi-instagram"></i> Instagram</a>
+                    </li>
+     
+                    <li class="nav-item">
+                        <a class="nav-link" target="_blank" href="https://t.me/+UBsGxry5ftZjZmUy"><i class="bi bi-telegram"></i> Telegram</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" target="_blank" href="mailto:admin@parkentpolitexnikum.uz"><i class="bi bi-envelope"></i> Email</a>
+                    </li>
+    
+                </ul>
+            </div>
+        </div>
+
+
+    </div>
+</footer>
+
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
+        integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js"
+        integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bs5-lightbox@1.8.2/dist/index.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.2.0/glide.min.js"></script>
+<script src="{% static 'js/carusel.js'%}"></script>
+
+

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Achievement</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script>
+        function updateFileInput() {
+            const uploadType = document.querySelector('input[name="upload_type"]:checked').value;
+            const fileInput = document.getElementById('achievement_files');
+
+            if (uploadType === 'images') {
+                fileInput.setAttribute('accept', '.jpg,.jpeg,.png');
+            } else {
+                fileInput.setAttribute('accept', '.mp4');
+            }
+        }
+    </script>
+</head>
+<body>
+
+<div class="container mt-5">
+    <h2>Post tahrirlash</h2>
+
+    {% if messages %}
+    <div class="alert alert-danger">
+        <ul>
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
+    <style>
+        .button-group {
+            display: flex;
+            justify-content: flex-end; /* Aligns buttons to the right */
+            gap: 10px; /* Adds space between the buttons */
+        }
+    </style>
+
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <div class="form-group">
+            <label for="news_name">Post Nomi:</label>
+            <input type="text" class="form-control" id="news_name" name="news_name" value="{{form.news_name.value}}"
+                   required>
+        </div>
+
+        <div class="form-group">
+            <label for="news_description">Post haqida:</label>
+            <textarea class="form-control" id="news_description" name="news_description" rows="3" required>{{ form.news_description.value }}</textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="news_date">Post sanasi:</label>
+            <input type="datetime-local" class="form-control" id="news_date" name="news_date"
+                   value="{{form.news_date.value|date:'Y-m-d\\TH:i' }}">
+        </div>
+
+        <div class="button-group">
+            <button type="submit" class="btn btn-primary">Saqlash</button>
+            <a href="{% url 'index' %}" class="btn btn-secondary">Close</a>
+        </div>
+    </form>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

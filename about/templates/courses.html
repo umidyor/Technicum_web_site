@@ -1,0 +1,49 @@
+{%extends 'navbar_only.html'%}
+{% block title %}Politexnikum kurslari{% endblock %}
+{%block content%}
+{%load static%}
+<style>
+    .card-body {
+        padding: 15px 0;
+    }
+</style>
+<div class="img-fon position-relative">
+        <img loading="lazy" id="img-fon" class="img-fluid" src="{%static 'img/dna.jpg'%}" alt="image" style="   width: 100% !important;  
+    height: auto;  
+    object-fit: cover;  
+    filter: brightness(0.7);">
+        <div class="container position-absolute top-50 start-50 translate-middle">
+            <p class="text-white"><span class="fw-bold"><a href="{%url 'index' %}" class="text-decoration-none text-white">BOSH SAHIFA</a></span> | <a href="{%url 'courses' %}" class="text-decoration-none text-white">KURSLAR VA TA'LIM</a></p>
+            <h1 class="font_size text-white">O'zingizni bilim darajangizni oshiring va hayotingizni o'zgartiring</h1>
+            <p class="text-white">Bizning kurslarimiz sizga o'z sohangizni tajribali egasi bo'lishga  yordam beradi.</p>
+        </div>
+    </div>
+
+<section>
+        <div class="container mb-5 mt-5">
+            <div class="row">
+                {%for course in courses%}
+                <div class="col-xl-4 col-xxl-4 col-lg-4 col-md-6 col-sm-6 mt-2 mb-2">
+                        <div class="card hvr-float m-auto h-100 m-5 d-flex flex-column">
+                            <img loading="lazy" class="card-img-top" src="{{course.course_picture.url}}" alt="Card image cap">
+                            <div class="card-body d-flex flex-column justify-content-between">
+                                <div>
+                                    <h4 class="card-title fw-bold">{{course.course_name}}</h4>
+                                    <p class="card-text">{{course.course_description}}</p>
+                                    <hr class="w-25 border border-success border-2">
+                                </div>
+                                <div class="mt-auto">
+                                    <a href="{%url 'every_course' course.pk%}" class="btn btn-outline-success p-3 rounded">
+                                                                                    Batafsil
+                                                                            </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {%endfor%}
+                                                                                                                                                                                <div class="col-xl-4 col-xxl-4 col-lg-4 col-md-6 col-sm-6 mt-2 mb-2">
+                    </div>
+                                                                                                                                    </div>
+        </div>
+    </section>
+{%endblock%}

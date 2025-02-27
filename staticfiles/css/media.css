@@ -1,0 +1,191 @@
+@media only screen and (max-width: 768px) {
+    .location_h1 {
+        font-size: 75px;
+    }
+    h1#courses_rek {
+        font-size: 20px;
+    }
+    p#courses_rek_p {
+        font-size: 10px !important;
+    }
+    .carousel {
+        background-color: #eeeeee;
+        min-height: 55vh;
+        padding: 0;
+    }
+    .staff {
+        display: none;
+    }
+    .carousel-inner {
+        min-height: 40vh;
+    }
+    .carousel img {
+        max-width: 45vw;
+        height: 75vw;
+    }
+
+    .most-inner {
+        max-width: 70vw;
+    }
+    .profile-card {
+        margin: 10px 50px;
+    }
+    .font_size {
+        font-size: 2rem;
+    }
+    .about_us {
+        font-size: 55px !important;
+    }
+    .astrum_img {
+        display: none;
+        top: 160rem;
+    }
+    .section-fon {
+        display: none;
+        background-size: 100% 340px;
+    }
+    .img-fon {
+        display: none;
+    }
+    .back p.text-white {
+        font-size: 10px;
+    }
+    .back {
+        height: 25%;
+        border-radius: 0px;
+        -webkit-border-radius: 0px;
+        -moz-border-radius: 0px;
+        -ms-border-radius: 0px;
+        -o-border-radius: 0px;
+    }
+    .back div {
+        text-align: end;
+    }
+    .back a {
+        margin-top: 0px !important;
+        font-size: 12px;
+        padding: 10px !important;
+    }
+    .carusel-top {
+        min-height: 65vh;
+    }
+    h1#courses_rek {
+        font-size: 22px;
+    }
+    p#courses_rek_p {
+        font-size: 10px !important;
+        padding: 0px !important;
+    }
+
+    h1.font_size {
+        font-size: 2.1rem;
+    }
+    h1.text-center .text-white {
+        font-size: 40px;
+    }
+    .card_table {
+        display: block;
+    }
+    .card_table img {
+        display: none;
+    }
+    p#skill {
+        width: 100%;
+    }
+    nav#navbar-bg {
+        width: 100%;
+    }
+    p.bg-warning {
+        width: 100%;
+    }
+}
+@media only screen and (min-width: 768px) {
+    .back {
+        height: 30%;
+    }
+    .astrum_img {
+        top: 160rem;
+    }
+    #navbar-bg {
+        margin: auto;
+    }
+}
+
+@media only screen and (min-width: 1280px) {
+    .nav-item #btn {
+        display: none;
+    }
+    .back {
+        height: 65%;
+    }
+}
+
+@media only screen and (max-width: 1279px) {
+    .nav-item a {
+        font-size: 14px;
+    }
+    .nav-item .dropdown button {
+        font-size: 14px;
+    }
+    h1#courses_rek {
+        font-size: 35px;
+    }
+    h1.text-center .text-white {
+        font-size: 60px;
+    }
+}
+@media only screen and (max-width: 1200px) {
+    .nav-item a {
+        font-size: 15px;
+    }
+    .nav-item .dropdown button {
+        font-size: 11px;
+    }
+    h1 {
+        font-size: 20px !important;
+    }
+    p {
+        font-size: 16px !important;
+    }
+    h1.font_size {
+        font-size: 3rem;
+    }
+    .back h1.text-white {
+        display: none;
+        font-size: 18px;
+        width: 80%;
+    }
+    .back p.text-white {
+        display: none;
+        font-size: 10px !important;
+        width: 70%;
+        padding: 0px !important;
+    }
+}
+@media only screen and (min-width: 992px) {
+    .astrum_img {
+        top: 125rem;
+    }
+    .back {
+        height: 50%;
+    }
+    .section-fon {
+        height: 45%;
+    }
+    .carousel-caption h1 {
+        width: 75%;
+    }
+}
+
+@media only screen and (max-width: 992px) {
+    p#courses_rek_p {
+        font-size: 12px !important;
+        padding: 0px !important;
+    }
+    h1.font_size {
+        font-size: 2.7rem;
+    }
+    .carousel-caption h1 {
+        width: 75%;
+    }
+}
